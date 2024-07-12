@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend\admin;
 
+use App\Http\Controllers\Controller;
 use App\utilities\ImageUtils;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -37,6 +38,20 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect()->back()->with('status', 'profile updated successfully!');
+    }
+
+    public function updatePassword(Request $request): RedirectResponse
+    {
+        $request->validate(array(
+           'current_password' => array('required', 'current_password'),
+           'password' => array('required', 'min:6', 'confirmed'),
+        ));
+
+        $request->user()->update(array(
+            'password' => bcrypt($request->password)
+        ));
+
+        return redirect()->back()->with('status', 'password updated successfully!');
     }
 
     public function destroy(Request $request): RedirectResponse
