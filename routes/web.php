@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\Backend\admin\AdminController;
 use App\Http\Controllers\Backend\admin\ProfileController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', array(HomeController::class, 'index'))
+->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
