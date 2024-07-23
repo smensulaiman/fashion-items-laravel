@@ -37,8 +37,8 @@
 
 .select_number span.spinner>.sub:hover,
 .select_number span.spinner>.add:hover {
-	background: #08C;
-	border-color: #08C;
+	background: #198754;
+	border-color: #198754;
 }
 
 .select_number .number_area::-webkit-inner-spin-button,

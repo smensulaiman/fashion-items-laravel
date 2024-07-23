@@ -1,12 +1,6 @@
 @php use Illuminate\Support\Facades\Auth; @endphp
 @extends('admin.layouts.master')
 
-@php
-    if($errors->has('current_password')){
-        //dd($errors->first('current_password'));
-    }
-@endphp
-
 @section('content')
     <section class="section">
         <div class="section-header">
@@ -36,24 +30,20 @@
                                 <div class="row">
                                     @if(!empty(Auth::user()->image))
                                         <div class="form-group" style="padding-left: 15px">
-                                            <img class="img-thumbnail rounded d-block"
-                                                 src="{{ asset(Auth::user()->image)  }}" alt="..." width="100">
+                                            <img class="img-thumbnail rounded d-block" src="{{ asset(Auth::user()->image)  }}" alt="..." width="100">
                                         </div>
                                     @endif
                                     <div class="form-group col-12">
                                         <label>Image</label>
-                                        <input type="file" class="form-control d-flex align-items-center" name="image"
-                                               style="padding: 7px">
+                                        <input type="file" class="form-control d-flex align-items-center" name="image" style="padding: 7px">
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>First Name</label>
-                                        <input type="text" class="form-control" name="name"
-                                               value="{{ Auth::user()->name }}" required="">
+                                        <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" required="">
                                     </div>
                                     <div class="form-group col-md-6 col-12">
                                         <label>Last Name</label>
-                                        <input type="email" class="form-control" name="email"
-                                               value="{{ Auth::user()->email }}" required="">
+                                        <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required="">
                                     </div>
                                 </div>
                             </div>

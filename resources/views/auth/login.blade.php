@@ -60,16 +60,9 @@
                                                 <input class="form-check-input" type="checkbox" id="remember_me" name="remember">
                                                 <label class="form-check-label" for="remember">{{ __('Remember me') }}</label>
                                             </div>
-                                            <a class="forget_p" href="forget_password.html">forget password ?</a>
+                                            <a class="forget_p" href="{{ route('password.request') }}">forget password ?</a>
                                         </div>
                                         <button class="common_btn" type="submit">login</button>
-                                        <p class="social_text">Sign in with social account</p>
-                                        <ul class="wsus__login_link">
-                                            <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        </ul>
                                     </form>
                                 </div>
                             </div>
