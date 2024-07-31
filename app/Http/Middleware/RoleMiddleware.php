@@ -21,7 +21,7 @@ class RoleMiddleware
             } else if ($request->user()->role == 'vendor') {
                 return redirect()->route('vendor.dashboard');
             }
-            return redirect()->route('dashboard');
+            return redirect()->route('user.dashboard');
         }
         return $next($request);
     }

@@ -6677,7 +6677,7 @@ WISHLIST PAGE START
 }
 
 .dashboard_sidebar {
-    width: 15%;
+    width: 240px !important;
     height: 100vh;
     background: rgba(11, 44, 61, 0.95);
     position: fixed;
@@ -7168,7 +7168,6 @@ WISHLIST PAGE START
     background: #fff;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: rgba(99, 99, 99, 0.3) 0px 0px 8px 0px;
 }
 
 .wsus__dash_pro_area h4 {
