@@ -28,13 +28,24 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if($request->user()->role == 'admin'){
+        if ($request->user()->role == 'admin') {
             return redirect()->intended(route('admin.dashboard'));
-        }else if ($request->user()->role == 'vendor'){
+        } else if ($request->user()->role == 'vendor') {
             return redirect()->intended(route('vendor.dashboard'));
         }
 
-        return redirect()->intended(route('admin.dashboard', absolute: false));
+        return redirect()->intended(route('user.dashboard', absolute: false));
+    }
+
+    public function dashboard(Request $request): RedirectResponse
+    {
+        if ($request->user()->role == 'admin') {
+            return redirect()->intended(route('admin.dashboard'));
+        } else if ($request->user()->role == 'vendor') {
+            return redirect()->intended(route('vendor.dashboard'));
+        }
+
+        return redirect()->intended(route('user.dashboard', absolute: false));
     }
 
     /**

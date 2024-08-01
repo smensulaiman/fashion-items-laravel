@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Auth; @endphp
 <nav class="wsus__main_menu d-none d-lg-block">
     <div class="container">
         <div class="row">
@@ -12,7 +13,7 @@
                             <ul class="wsus_menu_cat_droapdown">
                                 <li><a href="#">New Arrivals <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -26,7 +27,7 @@
                                 <li><a href="#">Best Sellers</a></li>
                                 <li><a href="#">Trending <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -44,7 +45,7 @@
                                 <li><a href="#">Camera</a></li>
                                 <li><a href="#">Photos & Videos <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -61,7 +62,7 @@
                             <ul class="wsus_menu_cat_droapdown">
                                 <li><a href="#">New Arrivals <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -75,7 +76,7 @@
                                 <li><a href="#">Best Sellers</a></li>
                                 <li><a href="#">Trending <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -93,7 +94,7 @@
                                 <li><a href="#">Camera</a></li>
                                 <li><a href="#">Photos & Videos <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -110,7 +111,7 @@
                             <ul class="wsus_menu_cat_droapdown">
                                 <li><a href="#">New Arrivals <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -124,7 +125,7 @@
                                 <li><a href="#">Best Sellers</a></li>
                                 <li><a href="#">Trending <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -142,7 +143,7 @@
                                 <li><a href="#">Camera</a></li>
                                 <li><a href="#">Photos & Videos <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -159,7 +160,7 @@
                             <ul class="wsus_menu_cat_droapdown">
                                 <li><a href="#">New Arrivals <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -173,7 +174,7 @@
                                 <li><a href="#">Best Sellers</a></li>
                                 <li><a href="#">Trending <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -191,7 +192,7 @@
                                 <li><a href="#">Camera</a></li>
                                 <li><a href="#">Photos & Videos <i class="fas fa-angle-right"></i></a>
                                     <ul class="wsus__sub_category">
-                                        <li><a href="#">New Arrivals</a> </li>
+                                        <li><a href="#">New Arrivals</a></li>
                                         <li><a href="#">Best Sellers</a></li>
                                         <li><a href="#">Trending</a></li>
                                         <li><a href="#">Clothing</a></li>
@@ -305,8 +306,11 @@
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="contact.html">contact</a></li>
-                        <li><a href="dsahboard.html">my account</a></li>
-                        <li><a href="{{ route('login') }}">login</a></li>
+                        @if(empty(Auth::user()->name))
+                            <li><a href="{{ route('login') }}">login</a></li>
+                        @else
+                            <li><a href="{{ route('dashboard')  }}">my account</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
