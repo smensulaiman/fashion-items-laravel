@@ -7,25 +7,19 @@ use Illuminate\Http\UploadedFile;
 
 class ImageUtils
 {
-
     protected string $imagePath = "";
 
     /**
      * @param string $imagePath
      */
-    public function __construct(string $imagePath)
+    public function __construct(string $imagePath = 'uploads/')
     {
         $this->imagePath = $imagePath;
     }
 
-    public function validateImage(Request $request, $except = null): ImageUtils
+    public function validateImage(Request $request): ImageUtils
     {
-        $request->validate([
-            'name' => 'required | string | max:100',
-            'email' => 'required | email', 'unique:users,email,' . $except,
-            'image' => ['image', 'max:2048'],
-        ]);
-
+        $request->validate(['image' => ['image', 'max:2048']]);
         return $this;
     }
 
@@ -35,5 +29,4 @@ class ImageUtils
         $image->move(public_path($this->imagePath), $filename);
         return $filename;
     }
-
 }

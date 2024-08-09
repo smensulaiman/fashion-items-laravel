@@ -25,11 +25,16 @@ class ProfileController extends Controller
         $uploadPath = 'uploads/profile';
         $imageUtil = new ImageUtils($uploadPath);
 
+        $request->validate([
+            'name' => 'required | string | max:100',
+            'email' => 'required | email', 'unique:users,email,' . $user->id,
+        ]);
+
         if ($request->hasFile('image')) {
             if (File::exists(public_path($user->image))) {
                 File::delete(public_path($user->image));
             }
-            $filename = $imageUtil->validateImage($request, $user->id)->uploadImage($request->file('image'));
+            $filename = $imageUtil->validateImage($request)->uploadImage($request->file('image'));
             $user->image = $uploadPath . DIRECTORY_SEPARATOR . $filename;
         }
 

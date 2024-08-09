@@ -9,12 +9,14 @@
                 <div class="wsus__dashboard_profile">
                     <div class="wsus__dash_pro_area">
                         <!-- UPDATE USER INFO -->
-                        <form action="" method="POST">
+                        <form action="{{ route('user.profile') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="row">
                                 <h4>basic information</h4>
                                 <div class="col-xl-3 col-sm-6 col-md-6">
                                     <div class="wsus__dash_pro_img">
-                                        <img src="{{ asset(Auth::user()->image) }}" alt="img" class="img-fluid w-100">
+                                        <img src="{{ Auth::user()->image ? asset(Auth::user()->image) : asset('frontend/images/ts-2.jpg') }}" alt="img" class="img-fluid w-100">
                                         <input type="file" name="image">
                                     </div>
                                 </div>
