@@ -35,6 +35,7 @@ class UserProfileController extends Controller
             if(File::exists(public_path($user->image))){
                 File::delete(public_path($user->image));
             }
+
             $fileName = $imageUtil->validateImage($request)->uploadImage($request->file('image'));
             $user->image = $uploadPath . DIRECTORY_SEPARATOR . $fileName;
         }
@@ -45,4 +46,10 @@ class UserProfileController extends Controller
 
         return redirect()->back()->with('status', 'profile updated successfully!');
     }
+
+    public function updatePassword(Request $request)
+    {
+        dd($request->all());
+    }
+
 }

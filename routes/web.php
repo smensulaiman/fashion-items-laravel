@@ -24,4 +24,5 @@ Route::group(array('prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth',
     Route::get('dashboard', [UserDashboardController::class, 'index'] )->name('dashboard');
     Route::get('profile', [UserProfileController::class, 'index'] )->name('profile');
     Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::put('profile/password', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 });
