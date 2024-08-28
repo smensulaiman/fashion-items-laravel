@@ -20,6 +20,5 @@
                 <a href="#" onclick="event.preventDefault(); this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a>
             </form>
         </li>
-
     </ul>
 </div>
