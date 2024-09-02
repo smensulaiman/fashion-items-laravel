@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\venfor;
+namespace App\Http\Controllers\Backend\vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;

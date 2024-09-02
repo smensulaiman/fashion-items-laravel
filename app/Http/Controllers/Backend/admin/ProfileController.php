@@ -34,8 +34,8 @@ class ProfileController extends Controller
             if (File::exists(public_path($user->image))) {
                 File::delete(public_path($user->image));
             }
-            $filename = $imageUtil->validateImage($request)->uploadImage($request->file('image'));
-            $user->image = $uploadPath . DIRECTORY_SEPARATOR . $filename;
+
+            $user->image = $imageUtil->validateImage($request)->uploadImage($request->file('image'));
         }
 
         $user->name = $request->name;

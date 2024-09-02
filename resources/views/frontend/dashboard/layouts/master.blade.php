@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/ranger_style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/jquery.classycountdown.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/venobox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendor/flasher/toastr.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
@@ -87,6 +88,17 @@
 
 <!--main/custom js-->
 <script src="{{asset('frontend/js/main.js')}}"></script>
+
+<script src="{{asset('vendor/flasher/toastr.min.js')}}"></script>
+
+<script>
+    @if($errors->any())
+    @foreach($errors->all() as $error)
+    toastr.error('{{$error}}', 'Error!')
+    @endforeach
+    @endif
+</script>
+
 </body>
 
 </html>

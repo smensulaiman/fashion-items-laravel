@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend\vendor;
 
 use App\Http\Controllers\Controller;
 use App\utilities\ImageUtils;
@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
-class UserProfileController extends Controller
+class VendorProfileController extends Controller
 {
     public function index(): View
     {
-        return view('frontend.dashboard.user-profile');
+        return view('vendor.dashboard.profile');
     }
 
     public function updateProfile(Request $request): RedirectResponse
@@ -32,7 +32,7 @@ class UserProfileController extends Controller
         $user->email = $request->get('email');
 
         if ($request->hasFile('image')) {
-            if(File::exists(public_path($user->image))){
+            if (File::exists(public_path($user->image))) {
                 File::delete(public_path($user->image));
             }
 
