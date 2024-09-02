@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Backend\admin;
 
+use App\DataTables\SliderDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use App\Traits\ImageUploadTrait;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -17,15 +19,15 @@ class SliderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(SliderDataTable $dataTable)
     {
-        return view('admin.slider.index');
+        return $dataTable->render('admin.slider.index');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('admin.slider.create');
     }
@@ -33,7 +35,7 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'banner' => ['required'],
@@ -52,12 +54,12 @@ class SliderController extends Controller
 
             $slider->banner = $this->uploadImage($request, 'banner', 'uploads');
 
-            $slider->type = request('type');
-            $slider->title = request('title');
-            $slider->starting_price = request('starting_price');
-            $slider->url = request('url');
-            $slider->serial = request('serial');
-            $slider->status = request('status');
+            $slider->type = $request->type;
+            $slider->title = $request->title;
+            $slider->starting_price = $request->starting_price;
+            $slider->url = $request->url;
+            $slider->serial = $request->serial;
+            $slider->status = $request->status;
             $slider->save();
 
         } catch (Exception $exception) {
@@ -79,9 +81,11 @@ class SliderController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        //
+        //$data = DB::query()->from("sliders")->where("id", $id)->first();
+        $slider = Slider::findOrFail($id);
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
@@ -89,7 +93,38 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'type' => ['string', 'max:200'],
+            'title' => ['required', 'max:200'],
+            'starting_price' => ['required', 'numeric'],
+            'url' => ['url'],
+            'serial' => ['required', 'integer'],
+            'status' => ['required', 'integer'],
+        ]);
+
+        $slider = Slider::findOrFail($id);
+
+        try {
+            /** Handle file upload */
+
+            if($request->hasFile('banner')) {
+                $slider->banner = $this->updateImage($request, 'banner', 'uploads', $request->banner);
+            }
+
+            $slider->type = $request->type;
+            $slider->title = $request->title;
+            $slider->starting_price = $request->starting_price;
+            $slider->url = $request->url;
+            $slider->serial = $request->serial;
+            $slider->status = $request->status;
+            $slider->save();
+
+        } catch (Exception $exception) {
+            toastr()->error($exception->getMessage(), array(), 'failed');
+        }
+
+        toastr()->success('Slider created successfully!', array(), 'success');
+        return redirect()->back();
     }
 
     /**

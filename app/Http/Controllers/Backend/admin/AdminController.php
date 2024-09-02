@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {

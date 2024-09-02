@@ -9,6 +9,7 @@
         "ext-pdo": "*",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
+        "yajra/laravel-datatables": "^11.0",
         "yoeunes/toastr": "^3.0"
     },
     "require-dev": {
