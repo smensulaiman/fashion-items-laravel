@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>General Dashboard &mdash; Stisla</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Dashboard &mdash; Fashion Items</title>
 
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap/css/bootstrap.min.css')}}">
@@ -86,6 +87,7 @@
 <script src="{{asset('backend/assets/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
 <script src="//cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/2.1.5/js/dataTables.bootstrap4.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Page Specific JS File -->
 <script src="{{asset('backend/assets/js/page/index-0.js')}}"></script>
@@ -102,6 +104,65 @@
             toastr.error('{{$error}}', 'Error!')
         @endforeach
     @endif
+</script>
+
+<!-- Dynamic delete alert -->
+
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.delete-slider-item', function (event) {
+            event.preventDefault();
+            const deleteUrl = $(this).attr('href');
+
+            confirmDelete(deleteUrl);
+        });
+    });
+
+    function confirmDelete(url) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                performDeleteRequest(url);
+            }
+        });
+    }
+
+    function performDeleteRequest(url) {
+        $.ajax({
+            type: 'DELETE',
+            url: url,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: handleDeleteSuccess,
+            error: handleDeleteError
+        });
+    }
+
+    function handleDeleteSuccess(data) {
+        Swal.fire({
+            title: "Deleted!",
+            text: data.message,
+            icon: "success"
+        });
+        $('#slider-table').DataTable().ajax.reload();
+    }
+
+    function handleDeleteError(xhr, status, error) {
+        Swal.fire({
+            title: "Error!",
+            text: "An error occurred while deleting. Please try again.",
+            icon: "error"
+        });
+    }
+
 </script>
 
 @stack('scripts')

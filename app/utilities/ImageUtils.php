@@ -27,6 +27,6 @@ class ImageUtils
     {
         $filename = uniqid() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path($this->imagePath), $filename);
-        return $this->imagePath . '/' . $filename;
+        return $this->imagePath . DIRECTORY_SEPARATOR . $filename;
     }
 }

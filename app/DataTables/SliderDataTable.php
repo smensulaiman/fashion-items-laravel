@@ -25,7 +25,7 @@ class SliderDataTable extends DataTable
             ->addColumn('action', function ($query) {
                 return '<div style="display: flex; justify-content: space-evenly">
                             <a class="btn btn-outline-primary rounded-0" href="' . route('admin.slider.edit', $query->id) . '"><i class="far fa-edit"></i></a>
-                            <a class="btn btn-outline-danger rounded-0" href="' . route('admin.slider.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
+                            <a class="btn btn-outline-danger delete-slider-item rounded-0" href="' . route('admin.slider.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
                         </div>';
             })
             ->addColumn('banner', function ($query) {

@@ -9,6 +9,7 @@ use App\Traits\ImageUploadTrait;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class SliderController extends Controller
@@ -124,14 +125,22 @@ class SliderController extends Controller
         }
 
         toastr()->success('Slider created successfully!', array(), 'success');
-        return redirect()->back();
+        return redirect()->route('admin.slider.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): Response
     {
-        //
+        $slider = Slider::findOrFail($id);
+
+        if(!empty($slider->banner)) {
+            $this->deleteImage($slider->banner);
+        }
+
+        $slider->delete();
+
+        return response(array('code' => 200, 'status' => 'success', 'message' => 'Slider deleted successfully!'), 200, array('Content-Type' => 'application/json'));
     }
 }
