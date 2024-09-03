@@ -24,8 +24,8 @@ class SliderDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
                 return '<div style="display: flex; justify-content: space-evenly">
-                            <a class="btn btn-outline-primary rounded-0" href="' . route('admin.slider.edit', $query->id) . '"><i class="far fa-edit"></i></a>
-                            <a class="btn btn-outline-danger delete-slider-item rounded-0" href="' . route('admin.slider.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
+                            <a class="btn btn-dark rounded-0 shadow-none" href="' . route('admin.slider.edit', $query->id) . '"><i class="far fa-edit"></i></a>
+                            <a class="btn btn-danger delete-slider-item rounded-0 shadow-none" href="' . route('admin.slider.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
                         </div>';
             })
             ->addColumn('banner', function ($query) {
@@ -76,7 +76,7 @@ class SliderDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')->width(40)->addClass('text-center'),
             Column::make('banner')->width(120),
             Column::make('type'),
             Column::make('title'),
