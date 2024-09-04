@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="{{asset('vendor/flasher/toastr.min.css')}}">
     <link rel="stylesheet" href="//cdn.datatables.net/2.1.5/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.5/css/dataTables.bootstrap4.css">
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('backend/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('backend/assets/css/components.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/css/bootstrap-iconpicker.min.css')}}">
     <!-- Start GA -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
     <script>
@@ -95,6 +97,7 @@
 <!-- Template JS File -->
 <script src="{{asset('backend/assets/js/scripts.js')}}"></script>
 <script src="{{asset('backend/assets/js/custom.js')}}"></script>
+<script src="{{asset('backend/assets/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
 
 <script src="{{asset('vendor/flasher/toastr.min.js')}}"></script>
 
@@ -110,7 +113,7 @@
 
 <script>
     $(document).ready(function () {
-        $('body').on('click', '.delete-slider-item', function (event) {
+        $('body').on('click', '.delete-slider-item, .delete-category-item', function (event) {
             event.preventDefault();
             const deleteUrl = $(this).attr('href');
 
@@ -152,7 +155,7 @@
             text: data.message,
             icon: "success"
         });
-        $('#slider-table').DataTable().ajax.reload();
+        $(data.table).DataTable().ajax.reload();
     }
 
     function handleDeleteError(xhr, status, error) {

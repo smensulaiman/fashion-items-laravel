@@ -68,7 +68,7 @@ class SliderController extends Controller
         }
 
         toastr()->success('Slider created successfully!', array(), 'success');
-        return redirect()->back();
+        return redirect()->route('admin.slider.index');
     }
 
     /**
@@ -141,6 +141,10 @@ class SliderController extends Controller
 
         $slider->delete();
 
-        return response(array('code' => 200, 'status' => 'success', 'message' => 'Slider deleted successfully!'), 200, array('Content-Type' => 'application/json'));
+        return response(array('code' => 200,
+            'status' => 'success',
+            'message' => 'Slider deleted successfully!',
+            'table' =>  '#slider-table'
+        ), 200, array('Content-Type' => 'application/json'));
     }
 }

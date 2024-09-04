@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Slider;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class SliderDataTable extends DataTable
+class CategoryDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -22,28 +22,29 @@ class SliderDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->addColumn('action', 'category.action')
+            ->addColumn('icon', function ($query) {
+                return '<i class="' . $query->icon . '" style="font-size: 24px"></i>';
+            })
             ->addColumn('action', function ($query) {
                 return '<div style="display: flex; justify-content: space-evenly">
-                            <a class="btn btn-dark rounded-0 shadow-none" href="' . route('admin.slider.edit', $query->id) . '"><i class="far fa-edit"></i></a>
-                            <a class="btn btn-danger delete-slider-item rounded-0 shadow-none" href="' . route('admin.slider.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
+                            <a class="btn btn-dark rounded-0 shadow-none" href="' . route('admin.category.edit', $query->id) . '"><i class="far fa-edit"></i></a>
+                            <a class="btn btn-danger delete-category-item rounded-0 shadow-none" href="' . route('admin.category.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
                         </div>';
-            })
-            ->addColumn('banner', function ($query) {
-                return "<img width='100' src='" . asset($query->banner) . "' alt=''>";
             })
             ->addColumn('status', function ($query) {
                 $badge = $query->status === 1 ? 'badge-success' : 'badge-danger';
                 $status = $query->status === 1 ? 'Active' : 'Inactive';
                 return '<span class="badge '. $badge .'">' . $status . '</span>';
             })
-            ->rawColumns(['action', 'banner', 'status'])
+            ->rawColumns(['action', 'icon', 'status'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Slider $model): QueryBuilder
+    public function query(Category $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -54,22 +55,22 @@ class SliderDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('slider-table')
-            ->addTableClass('table-striped')
-            ->columns($this->getColumns())
-            ->minifiedAjax()
-            //->dom('Bfrtip')
-            ->orderBy(1)
-            ->selectStyleSingle()
-            ->pageLength(100)
-            ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            ]);
+                    ->setTableId('category-table')
+                    ->addTableClass('table-striped')
+                    ->columns($this->getColumns())
+                    ->minifiedAjax()
+                    //->dom('Bfrtip')
+                    ->orderBy(1)
+                    ->pageLength(100)
+                    ->selectStyleSingle()
+                    ->buttons([
+                        Button::make('excel'),
+                        Button::make('csv'),
+                        Button::make('pdf'),
+                        Button::make('print'),
+                        Button::make('reset'),
+                        Button::make('reload')
+                    ]);
     }
 
     /**
@@ -79,12 +80,8 @@ class SliderDataTable extends DataTable
     {
         return [
             Column::make('id')->width(40)->addClass('text-center'),
-            Column::make('banner')->width(120),
-            Column::make('type'),
-            Column::make('title'),
-            Column::make('starting_price'),
-            Column::make('url'),
-            Column::make('serial'),
+            Column::make('name'),
+            Column::make('icon')->width(100)->addClass('text-center'),
             Column::make('status'),
             Column::computed('action')
                 ->exportable(false)
@@ -99,6 +96,6 @@ class SliderDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Slider_' . date('YmdHis');
+        return 'Category_' . date('YmdHis');
     }
 }
