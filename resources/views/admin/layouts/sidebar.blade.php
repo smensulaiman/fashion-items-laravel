@@ -29,6 +29,11 @@
                             <i class="fas fa-layer-group"></i><span>Category</span>
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('admin.sub-category.index') }}">
+                            <i class="fas fa-layer-group"></i><span>Sub Category</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
 

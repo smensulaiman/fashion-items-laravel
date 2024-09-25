@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\admin\AdminController;
 use App\Http\Controllers\Backend\admin\CategoryController;
 use App\Http\Controllers\Backend\admin\ProfileController;
 use App\Http\Controllers\Backend\admin\SliderController;
+use App\Http\Controllers\Backend\admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', array(AdminController::class, 'dashboard'))
@@ -26,3 +27,6 @@ Route::resource('slider', SliderController::class);
 
 /* Category */
 Route::resource('category', CategoryController::class);
+
+/* Sub Category */
+Route::resource('sub-category', SubCategoryController::class);
