@@ -38,11 +38,11 @@
                                         <input type="file" class="form-control d-flex align-items-center" name="image" style="padding: 7px">
                                     </div>
                                     <div class="form-group col-md-6 col-12">
-                                        <label>First Name</label>
+                                        <label>Full Name</label>
                                         <input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" required="">
                                     </div>
                                     <div class="form-group col-md-6 col-12">
-                                        <label>Last Name</label>
+                                        <label>Email</label>
                                         <input type="email" class="form-control" name="email" value="{{ Auth::user()->email }}" required="">
                                     </div>
                                 </div>
