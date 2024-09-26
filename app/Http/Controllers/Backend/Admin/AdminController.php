@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend\admin;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
+use Illuminate\View\View;
 
 class AdminController extends Controller
 {

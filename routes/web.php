@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Backend\admin\AdminController;
-use App\Http\Controllers\Backend\admin\ProfileController;
+use App\Http\Controllers\Backend\Admin\AdminController;
+use App\Http\Controllers\Backend\Admin\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserProfileController;

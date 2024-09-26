@@ -36,8 +36,7 @@ class UserProfileController extends Controller
                 File::delete(public_path($user->image));
             }
 
-            $fileName = $imageUtil->validateImage($request)->uploadImage($request->file('image'));
-            $user->image = $uploadPath . DIRECTORY_SEPARATOR . $fileName;
+            $user->image = $imageUtil->validateImage($request)->uploadImage($request->file('image'));
         }
 
         $user->save();
@@ -49,7 +48,17 @@ class UserProfileController extends Controller
 
     public function updatePassword(Request $request)
     {
-        dd($request->all());
+        request()->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', 'min:8', 'confirmed'],
+        ]);
+
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
+        toastr()->success('Password updated successfully!');
+        return redirect()->back()->with('status', 'Password updated successfully!');
     }
 
 }

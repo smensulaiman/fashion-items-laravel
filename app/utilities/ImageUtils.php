@@ -12,7 +12,7 @@ class ImageUtils
     /**
      * @param string $imagePath
      */
-    public function __construct(string $imagePath = 'uploads/')
+    public function __construct(string $imagePath = 'uploads')
     {
         $this->imagePath = $imagePath;
     }
@@ -25,8 +25,8 @@ class ImageUtils
 
     public function uploadImage(UploadedFile $image): string
     {
-        $filename = time() . '_' . $image->getClientOriginalName();
+        $filename = uniqid() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path($this->imagePath), $filename);
-        return $filename;
+        return $this->imagePath . '/' . $filename;
     }
 }

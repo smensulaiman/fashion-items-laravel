@@ -40,7 +40,7 @@
 
 <section id="wsus__dashboard">
     <div class="container-fluid">
-        @include('frontend.dashboard.layouts.sidebar')
+        @include('vendor.dashboard.layouts.sidebar')
         @yield('content')
     </div>
 </section>
