@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\vendor;
+namespace App\Http\Controllers\Backend\Vendor;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;

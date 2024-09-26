@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Backend\admin;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\DataTables\SubCategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SubCategory;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
 {
@@ -32,9 +35,29 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
-           'name' => ['required', 'string', 'unique:sub_categories,name'],
+        //dd($request->all());
+
+        $request->validate([
+            'category' => ['required'],
+            'name' => ['required', 'string', 'max:200', 'unique:sub_categories,name'],
+            'status' => ['required'],
         ]);
+
+        $subCategory = new SubCategory();
+        $subCategory->category_id = $request->input('category');
+        $subCategory->name = $request->input('name');
+        $subCategory->slug = Str::slug($request->input('name'));
+        $subCategory->status = $request->input('status');
+
+        try {
+            $subCategory->save();
+        }catch (Exception $exception){
+            toastr()->error($exception->getMessage());
+        }
+
+        toastr()->success('Sub-Category created successfully!', array(), 'success');
+        return redirect()->back();
+
     }
 
     /**
@@ -50,7 +73,11 @@ class SubCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::where('status', 1)->get();
+        $subCategory = SubCategory::findOrFail($id);
+
+        //dd($subCategory);
+        return view('admin.sub-category.edit', compact('categories', 'subCategory'));
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\admin;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;

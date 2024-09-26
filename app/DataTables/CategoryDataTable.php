@@ -22,9 +22,13 @@ class CategoryDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'category.action')
             ->addColumn('icon', function ($query) {
                 return '<i class="' . $query->icon . '" style="font-size: 24px"></i>';
+            })
+            ->addColumn('status', function ($query) {
+                $badge = $query->status === 1 ? 'badge-success' : 'badge-danger';
+                $status = $query->status === 1 ? 'Active' : 'Inactive';
+                return '<span class="badge '. $badge .'">' . $status . '</span>';
             })
             ->addColumn('action', function ($query) {
                 return '<div style="display: flex; justify-content: space-evenly">
@@ -32,12 +36,7 @@ class CategoryDataTable extends DataTable
                             <a class="btn btn-danger delete-category-item rounded-0 shadow-none" href="' . route('admin.category.destroy', $query->id) . '"><i class="far fa-trash-alt"></i></a>
                         </div>';
             })
-            ->addColumn('status', function ($query) {
-                $badge = $query->status === 1 ? 'badge-success' : 'badge-danger';
-                $status = $query->status === 1 ? 'Active' : 'Inactive';
-                return '<span class="badge '. $badge .'">' . $status . '</span>';
-            })
-            ->rawColumns(['action', 'icon', 'status'])
+            ->rawColumns(['icon', 'status', 'action'])
             ->setRowId('id');
     }
 
@@ -56,7 +55,7 @@ class CategoryDataTable extends DataTable
     {
         return $this->builder()
                     ->setTableId('category-table')
-                    ->addTableClass('table-striped')
+                    ->addTableClass('table table-striped table-bordered')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
@@ -79,15 +78,15 @@ class CategoryDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id')->width(40)->addClass('text-center'),
-            Column::make('name'),
-            Column::make('icon')->width(100)->addClass('text-center'),
-            Column::make('status'),
+            Column::make('id')->width(40)->addClass('text-center align-middle'),
+            Column::make('name')->addClass('align-middle'),
+            Column::make('icon')->width(100)->addClass('text-center align-middle'),
+            Column::make('status')->addClass('text-center align-middle'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
                 ->width(60)
-                ->addClass('text-center')
+                ->addClass('text-center align-middle')
         ];
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\admin;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
@@ -50,7 +50,7 @@ class CategoryController extends Controller
             $category->status = $request->status;
 
             $category->save();
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             toastr()->error($exception->getMessage());
         }
 

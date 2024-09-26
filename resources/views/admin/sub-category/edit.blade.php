@@ -21,24 +21,27 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('admin.category.update', $category->id) }}" method="POST">
+                            <form action="{{ route('admin.sub-category.update', $subCategory->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
-                                    <label>Icon</label>
-                                    <div>
-                                        <button class="btn btn-secondary" role="iconpicker" name="icon"></button>
-                                    </div>
+                                    <label for="selCategory">Status</label>
+                                    <select id="selCategory" class="form-control" name="category">
+                                        <option selected disabled>Select Category</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}" {{$category->id === $subCategory->category_id ? 'selected' : ''}} >{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $category->name }}">
+                                    <label>Sub Category Name</label>
+                                    <input type="text" class="form-control" name="name" value="{{ $subCategory->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Status</label>
                                     <select id="inputStatus" class="form-control" name="status">
-                                        <option value="1" {{ $category->status == 1 ? 'selected' : '' }}>Active</option>
-                                        <option value="0" {{ $category->status == 0 ? 'selected' : '' }}>Inactive</option>
+                                        <option value="1" {{$subCategory->status ? 'selected' : ''}}>Active</option>
+                                        <option value="0" {{$subCategory->status ? '' : 'selected'}}>Inactive</option>
                                     </select>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Update</button>

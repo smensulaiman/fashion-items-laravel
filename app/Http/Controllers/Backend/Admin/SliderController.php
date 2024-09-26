@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\admin;
+namespace App\Http\Controllers\Backend\Admin;
 
 use App\DataTables\SliderDataTable;
 use App\Http\Controllers\Controller;

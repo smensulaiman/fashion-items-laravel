@@ -3,8 +3,8 @@
  * Admin Routes
  */
 
-use App\Http\Controllers\Backend\vendor\VendorController;
-use App\Http\Controllers\Backend\vendor\VendorProfileController;
+use App\Http\Controllers\Backend\Vendor\VendorController;
+use App\Http\Controllers\Backend\Vendor\VendorProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('dashboard', array(VendorController::class, 'dashboard'))
