@@ -13,11 +13,14 @@
         <li><a href="dsahboard_review.html"><i class="far fa-star"></i> Reviews</a></li>
         <li><a href="dsahboard_wishlist.html"><i class="far fa-heart"></i> Wishlist</a></li>
         <li><a href="{{ route('user.profile') }}"><i class="far fa-user"></i> My Profile</a></li>
-        <li><a href="dsahboard_address.html"><i class="fal fa-gift-card"></i> Addresses</a></li>
+        <li><a href="dsahboard_address.html"><i class="far fa-shipping-fast"></i> Addresses</a></li>
         <li>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <a href="#" onclick="event.preventDefault(); this.closest('form').submit();"><i class="far fa-sign-out-alt"></i> Log out</a>
+                <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                    <i class="far fa-sign-out-alt"></i>
+                    <span class="text-white">Log out</span>
+                </a>
             </form>
         </li>
 

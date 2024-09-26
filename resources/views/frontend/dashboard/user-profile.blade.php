@@ -37,10 +37,11 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
-                                    <button class="common_btn mb-4 mt-2" type="submit">Update</button>
+                                    <button class="common_btn mb-2" type="submit">Update</button>
                                 </div>
                             </div>
                         </form>
+                        <hr class="text-black-50 mx-4">
                         <!-- UPDATE USER PASSWORD -->
                         <form action="{{ route('user.profile.update.password') }}" method="POST">
                             @csrf
@@ -74,7 +75,6 @@
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
