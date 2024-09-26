@@ -29,7 +29,7 @@ class SubCategoryDataTable extends DataTable
             ->addColumn('action', function ($result) {
                 return '<div style="display: flex; justify-content: space-evenly">
                             <a class="btn btn-dark rounded-0 shadow-none" href="' . route('admin.sub-category.edit', $result->id) . '"><i class="far fa-edit"></i></a>
-                            <a class="btn btn-danger delete-category-item rounded-0 shadow-none" href="' . route('admin.sub-category.destroy', $result->id) . '"><i class="far fa-trash-alt"></i></a>
+                            <a class="btn btn-danger delete-sub-category-item rounded-0 shadow-none" href="' . route('admin.sub-category.destroy', $result->id) . '"><i class="far fa-trash-alt"></i></a>
                         </div>';
             })
             ->rawColumns(['status', 'action'])

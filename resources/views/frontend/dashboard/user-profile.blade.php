@@ -16,7 +16,9 @@
                                 <h4>basic information</h4>
                                 <div class="col-xl-3 col-sm-6 col-md-6">
                                     <div class="wsus__dash_pro_img">
-                                        <img src="{{ Auth::user()->image ? asset(Auth::user()->image) : asset('frontend/images/ts-2.jpg') }}" alt="img" class="img-fluid w-100">
+                                        <img
+                                            src="{{ Auth::user()->image ? asset(Auth::user()->image) : asset('frontend/images/ts-2.jpg') }}"
+                                            alt="img" class="img-fluid w-100">
                                         <input type="file" name="image">
                                     </div>
                                 </div>
@@ -25,13 +27,15 @@
                                         <div class="col-xl-6 col-md-6">
                                             <div class="wsus__dash_pro_single">
                                                 <i class="fas fa-user-tie"></i>
-                                                <input type="text" name="name" placeholder="Full Name" value="{{ Auth::user()->name }}">
+                                                <input type="text" name="name" placeholder="Full Name"
+                                                       value="{{ Auth::user()->name }}">
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-6">
                                             <div class="wsus__dash_pro_single">
                                                 <i class="fal fa-envelope-open"></i>
-                                                <input type="email" name="email" placeholder="Email" value="{{ Auth::user()->email }}">
+                                                <input type="email" name="email" placeholder="Email"
+                                                       value="{{ Auth::user()->email }}">
                                             </div>
                                         </div>
                                     </div>
@@ -53,7 +57,8 @@
                                         <div class="col-xl-4 col-md-6">
                                             <div class="wsus__dash_pro_single">
                                                 <i class="fas fa-unlock-alt"></i>
-                                                <input type="password" name="current_password" placeholder="Current Password">
+                                                <input type="password" name="current_password"
+                                                       placeholder="Current Password">
                                             </div>
                                         </div>
                                         <div class="col-xl-4 col-md-6">
@@ -65,7 +70,8 @@
                                         <div class="col-xl-4">
                                             <div class="wsus__dash_pro_single">
                                                 <i class="fas fa-lock-alt"></i>
-                                                <input type="password" name="password_confirmation" placeholder="Confirm Password">
+                                                <input type="password" name="password_confirmation"
+                                                       placeholder="Confirm Password">
                                             </div>
                                         </div>
                                         <div class="col-xl-12">

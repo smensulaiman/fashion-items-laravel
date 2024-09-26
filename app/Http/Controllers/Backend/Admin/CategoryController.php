@@ -112,12 +112,12 @@ class CategoryController extends Controller
         try {
             Category::findOrFail($id)->delete();
         } catch (Exception $exception) {
-            return response(array('code' => 404, 'status' => 'failed', 'message' => $exception->getMessage()), 200, array('Content-Type' => 'application/json'));
+            return response(array('code' => 403, 'status' => 'failed', 'message' => $exception->getMessage()), 403, array('Content-Type' => 'application/json'));
         }
 
         return response(array('code' => 200,
             'status' => 'success',
-            'message' => 'Slider deleted successfully!',
+            'message' => 'Category deleted successfully!',
             'table' =>  '#category-table'
             ), 200, array('Content-Type' => 'application/json'));
     }

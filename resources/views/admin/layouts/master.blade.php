@@ -113,7 +113,7 @@
 
 <script>
     $(document).ready(function () {
-        $('body').on('click', '.delete-slider-item, .delete-category-item', function (event) {
+        $('body').on('click', '.delete-slider-item, .delete-category-item, .delete-sub-category-item', function (event) {
             event.preventDefault();
             const deleteUrl = $(this).attr('href');
 

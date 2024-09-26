@@ -139,7 +139,11 @@ class SliderController extends Controller
             $this->deleteImage($slider->banner);
         }
 
-        $slider->delete();
+        try {
+            $slider->delete();
+        }catch (Exception $exception){
+            return response(array('code' => 403, 'status' => 'failed', 'message' => $exception->getMessage()), 403, array('Content-Type' => 'application/json'));
+        }
 
         return response(array('code' => 200,
             'status' => 'success',
