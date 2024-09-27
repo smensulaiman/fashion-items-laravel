@@ -50,7 +50,7 @@ class ChildCategoryController extends Controller
         }
 
         toastr()->success('Child Category created successfully!', array(), 'success');
-        return redirect()->route('admin.child-category.index')->with('success', 'Child Category created successfully!');
+        return redirect()->route('admin.child-category.index');
 
     }
 
@@ -93,7 +93,7 @@ class ChildCategoryController extends Controller
         }
 
         toastr()->success('Child Category updated successfully!', array(), 'success');
-        return redirect()->route('admin.child-category.index')->with('success', 'Child Category updated successfully!');
+        return redirect()->route('admin.child-category.index');
 
     }
 

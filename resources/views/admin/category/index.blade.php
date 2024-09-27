@@ -14,7 +14,7 @@
 
         <div class="section-body">
             <div class="row">
-                <div class="col-xl-8 col-lg-10 col-12">
+                <div class="col-xxl-4 col-xl-8 col-lg-10 col-12 m-0 p-0" style="min-width: 720px">
                     <div class="card">
                         <div class="card-header">
                             <h4>All Categories</h4>

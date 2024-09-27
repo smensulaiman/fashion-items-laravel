@@ -52,7 +52,7 @@ class ChildCategoryDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('childcategory-table')
-            ->addTableClass('table table-striped table-bordered')
+            //->addTableClass('table table-striped table-bordered')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')

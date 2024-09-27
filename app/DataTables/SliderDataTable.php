@@ -55,7 +55,7 @@ class SliderDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('slider-table')
-            ->addTableClass('table-striped')
+            //->addTableClass('table-striped')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')

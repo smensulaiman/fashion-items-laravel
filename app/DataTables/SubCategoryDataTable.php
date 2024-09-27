@@ -51,7 +51,7 @@ class SubCategoryDataTable extends DataTable
     {
         return $this->builder()
             ->setTableId('subcategory-table')
-            ->addTableClass('table table-striped table-bordered')
+            //->addTableClass('table table-striped table-bordered')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
