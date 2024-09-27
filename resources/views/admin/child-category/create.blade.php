@@ -4,7 +4,7 @@
 
     <section class="section">
         <div class="section-header">
-            <h1>Sub Category</h1>
+            <h1>Child Category</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="#">Components</a></div>
@@ -17,11 +17,11 @@
                 <div class="col-12 col-xl-6">
                     <div class="card">
                         <div class="card-header">
-                            <h4>Create Sub Category</h4>
+                            <h4>Create Child Category</h4>
                         </div>
                         <div class="card-body">
 
-                            <form action="{{ route('admin.sub-category.store') }}" method="POST">
+                            <form action="{{ route('admin.child-category.store') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="selCategory">Category</label>
@@ -33,8 +33,14 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Sub Category Name</label>
-                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
+                                    <label>Sub Category</label>
+                                    <select class="form-control" name="sub_category" id="selSubCategory">
+                                        <option selected disabled>Select Subcategory</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="childCategory">Child Category</label>
+                                    <input class="form-control" type="text" name="name" id="childCategory" value="{{ old('name') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputStatus">Status</label>
@@ -54,3 +60,31 @@
     </section>
 
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $('body').on('change', '#selCategory', function (e) {
+                let selectedCategoryId = $(this).val();
+                $.ajax({
+                    method: 'GET',
+                    url: '{{ route('admin.sub-category.by-category') }}',
+                    data: {
+                        category_id: selectedCategoryId
+                    },
+                    success: function (data) {
+                        //console.log(data);
+                        $('#selSubCategory').html('<option selected disabled>Select Subcategory</option>');
+                        $.each(data, function (index, val) {
+                            console.log(val.id)
+                            $('#selSubCategory').append(`<option value="${val.id}">${val.name}</option>`)
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(error);
+                    }
+                })
+            })
+        })
+    </script>
+@endpush

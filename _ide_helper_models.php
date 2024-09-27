@@ -34,6 +34,24 @@ namespace App\Models{
  * 
  *
  * @property int $id
+ * @property int $sub_category_id
+ * @property string $name
+ * @property string $slug
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ChildCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChildCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChildCategory query()
+ */
+	class ChildCategory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
  * @property string|null $banner
  * @property string|null $type
  * @property string|null $title

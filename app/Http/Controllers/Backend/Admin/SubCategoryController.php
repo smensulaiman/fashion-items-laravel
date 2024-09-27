@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use Exception;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -52,7 +53,7 @@ class SubCategoryController extends Controller
             toastr()->error($exception->getMessage());
         }
 
-        toastr()->success('Sub-Category created successfully!', array(), 'success');
+        toastr()->success('Sub Category created successfully!', array(), 'success');
         return redirect()->route('admin.sub-category.index')->with('success', 'Sub-Category created successfully!');
 
     }
@@ -96,8 +97,8 @@ class SubCategoryController extends Controller
             toastr()->error($exception->getMessage());
         }
 
-        toastr()->success('Sub-Category updated successfully!', array(), 'success');
-        return redirect()->route('admin.sub-category.index')->with('success', 'Sub-Category updated successfully!');
+        toastr()->success('Sub Category updated successfully!', array(), 'success');
+        return redirect()->route('admin.sub-category.index')->with('success', 'Sub Category updated successfully!');
 
     }
 
@@ -109,12 +110,12 @@ class SubCategoryController extends Controller
         try {
             SubCategory::findOrFail($id)->delete();
         } catch (Exception $exception) {
-            return response(array('code' => 404, 'status' => 'failed', 'message' => 'cha mari'), 404, array('Content-Type' => 'application/json'));
+            return response(array('code' => 404, 'status' => 'failed', 'message' => $exception->getMessage()), 404, array('Content-Type' => 'application/json'));
         }
 
         return response(array('code' => 200,
             'status' => 'success',
-            'message' => 'Sub-Category deleted successfully!',
+            'message' => 'Sub Category deleted successfully!',
             'table' => '#subcategory-table'
         ), 200, array('Content-Type' => 'application/json'));
     }
@@ -129,6 +130,13 @@ class SubCategoryController extends Controller
                 Rule::unique('sub_categories', 'name')->ignore($id)],
             'status' => ['required'],
         ]);
+    }
+
+    public function getSubcategoriesByCategory(Request $request): Collection
+    {
+        return SubCategory::where('category_id', $request->category_id)
+            ->where('status', 1)
+            ->get();
     }
 
 }

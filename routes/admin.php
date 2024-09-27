@@ -5,6 +5,7 @@
 
 use App\Http\Controllers\Backend\Admin\AdminController;
 use App\Http\Controllers\Backend\Admin\CategoryController;
+use App\Http\Controllers\Backend\Admin\ChildCategoryController;
 use App\Http\Controllers\Backend\Admin\ProfileController;
 use App\Http\Controllers\Backend\Admin\SliderController;
 use App\Http\Controllers\Backend\Admin\SubCategoryController;
@@ -29,4 +30,9 @@ Route::resource('slider', SliderController::class);
 Route::resource('category', CategoryController::class);
 
 /* Sub Category */
+Route::get('sub-categories-by-category', [SubCategoryController::class, 'getSubcategoriesByCategory'])
+->name('sub-category.by-category');
 Route::resource('sub-category', SubCategoryController::class);
+
+/* Child Category */
+Route::resource('child-category', ChildCategoryController::class);
