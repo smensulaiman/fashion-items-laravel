@@ -74,8 +74,8 @@ class SubCategoryDataTable extends DataTable
     {
         return [
             Column::make('id')->width(40)->addClass('text-center align-middle'),
-            Column::make('category')->addClass('align-middle'),
             Column::make('name')->addClass('align-middle'),
+            Column::make('category')->addClass('align-middle'),
             Column::make('status')->addClass('text-center align-middle'),
             Column::computed('action')
                 ->exportable(false)
