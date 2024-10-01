@@ -14,27 +14,36 @@
                 </a>
             </li>
             <li class="menu-header">Starter</li>
-            <li class="dropdown">
+
+            <li class="dropdown {{ setActive(array('admin.slider.*')) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-                    <i class="fas fa-list-ul"></i><span>Manage Website</span>
+                    <i class="fas fa-globe-asia"></i><span>Manage Website</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
+                    <li class="{{ setActive(array('admin.slider.*')) }}">
                         <a class="nav-link" href="{{ route('admin.slider.index') }}">
                             <i class="far fa-image"></i><span>Slider</span>
                         </a>
                     </li>
-                    <li>
+                </ul>
+            </li>
+
+            <li class="dropdown {{ setActive(array('admin.category.*', 'admin.sub-category.*', 'admin.child-category.*')) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+                    <i class="fas fa-list-ul"></i><span>Manage Categories</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setActive(array('admin.category.*')) }}">
                         <a class="nav-link" href="{{ route('admin.category.index') }}">
                             <i class="fas fa-layer-group"></i><span>Category</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ setActive(array('admin.sub-category.*')) }}">
                         <a class="nav-link" href="{{ route('admin.sub-category.index') }}">
                             <i class="fas fa-layer-group"></i><span>Sub Category</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{ setActive(array('admin.child-category.*')) }}">
                         <a class="nav-link" href="{{ route('admin.child-category.index') }}">
                             <i class="fas fa-layer-group"></i><span>Child Category</span>
                         </a>

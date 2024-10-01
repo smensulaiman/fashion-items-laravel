@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -35,12 +36,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'icon' => ['required', 'string', 'not_in:empty'],
-            'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
-            'status' => ['required', 'integer'],
-        ]);
-
         $category = new Category();
 
         try {
@@ -81,11 +76,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        $request->validate([
-            'icon' => ['required', 'string', 'not_in:empty'],
-            'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
-            'status' => ['required', 'integer'],
-        ]);
+        $this->validateCategory($request, $id);
 
         $category = Category::findOrFail($id);
 
@@ -121,4 +112,14 @@ class CategoryController extends Controller
             'table' =>  '#category-table'
             ), 200, array('Content-Type' => 'application/json'));
     }
+
+    public function validateCategory(Request $request, int $id = null): void
+    {
+        $request->validate([
+            'icon' => ['required', 'string', 'not_in:empty'],
+            'name' => ['required', 'string', 'max:255', Rule::unique('categories', 'name')->ignore($id)],
+            'status' => ['required', 'integer'],
+        ]);
+    }
+
 }

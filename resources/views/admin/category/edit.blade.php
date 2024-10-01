@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label>Icon</label>
                                     <div>
-                                        <button class="btn btn-secondary" role="iconpicker" name="icon"></button>
+                                        <button class="btn btn-secondary" data-icon="{{$category->icon}}" role="iconpicker" name="icon"></button>
                                     </div>
                                 </div>
                                 <div class="form-group">
